@@ -1,11 +1,15 @@
-import React from 'react';
-import './App.css';
+import GlobalStyle from './global';
+import RoutesApp from './routes';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    <div className="App">
-      index
-    </div>
+    <>
+    <AuthProvider>
+      <RoutesApp />
+      <GlobalStyle />
+    </AuthProvider>
+    </>
   );
 }
 
