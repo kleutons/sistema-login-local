@@ -1,5 +1,6 @@
 {
   "name": "sistema-login-local",
+  "homepage": "https://kleutons.github.io/sistema-login-local/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
