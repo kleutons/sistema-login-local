@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, useCallback } from 'react';
 import CryptoJS from 'crypto-js';
 
 export const AuthContext = createContext( {} as any);
@@ -26,23 +26,22 @@ export const AuthProvider = ( { children }: any ) => {
     }
     
      //-- get user data
-     const getUser = ( valueToken: string ) => {
-        if(valueToken && valueToken !== 'null'){
-            const tokenDescrypt = crypt(valueToken, false);
-                if( users_bd ){
-                    const hasUser = users_bd?.filter((data:User) => data.email === tokenDescrypt);               
-                    const nomeUser = hasUser[0].nome || null;
-                    const emailUser = hasUser[0].email || null; 
-                    setUser_data( {nome: nomeUser, email: emailUser} );
-                }
-            setLogged(valueToken);
+     const getUser = useCallback((valueToken: string) => {
+        if (valueToken && valueToken !== 'null') {
+          const tokenDescrypt = crypt(valueToken, false);
+          if (users_bd) {
+            const hasUser = users_bd?.filter((data: User) => data.email === tokenDescrypt);
+            const nomeUser = hasUser[0].nome || null;
+            const emailUser = hasUser[0].email || null;
+            setUser_data({ nome: nomeUser, email: emailUser });
+          }
+          setLogged(valueToken);
         }
-     }
+      }, [users_bd]);
 
-    useEffect( () => {
-        // console.log('logged >> ' + logged);
+     useEffect(() => {
         getUser(logged);
-    }, [logged])
+      }, [logged, getUser]);
 
     //- Sing Up --
     const singUp = (nome:string, email:string, pass: string) => {
