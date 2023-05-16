@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/sistema-login-local/static/css/main.e6c13ad2.css",
+    "main.js": "/sistema-login-local/static/js/main.1e2aa064.js",
+    "index.html": "/sistema-login-local/index.html",
+    "main.e6c13ad2.css.map": "/sistema-login-local/static/css/main.e6c13ad2.css.map",
+    "main.1e2aa064.js.map": "/sistema-login-local/static/js/main.1e2aa064.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.1e2aa064.js"
+  ]
+}
